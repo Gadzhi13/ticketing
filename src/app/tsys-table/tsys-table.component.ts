@@ -17,14 +17,13 @@ export class TsysTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filterSelect: ElementRef;
   private filterPredicateBuffer;
+  dataSource: TsysTableDataSource;
   private filterValueBuffer: string = "";
   ticket: Ticket = new Ticket(0, 0, "", new Date(Date.now()), "", "", "", "", "", "", 0, new Date(Date.now()), "", "", "", "", "", "");
   displayedColumns: string[] = ['id', 'impact', 'submitdate', 'title', 'status'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
   listOfProperties: string[] = [];
   allColumns: string[] = [];
-  data: ITicket[] = [];
-  dataSource: TsysTableDataSource = new TsysTableDataSource(this.data);
 
   changeColumn (colName: string) {
     if (this.columnsToDisplay.includes(colName)) {
@@ -48,11 +47,7 @@ export class TsysTableComponent implements AfterViewInit {
     this.listOfProperties.forEach(el => {
       this.allColumns.push(el);
     });
-    this.http.getTickets().subscribe(tickets => {
-      this.http.dataBuffer = tickets;
-      this.data = tickets;
-      this.dataSource.data = tickets;
-    })
+    this.dataSource = new TsysTableDataSource(this.http);
   };
 
   applyFilter(filterValue: string) {

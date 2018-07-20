@@ -1,5 +1,6 @@
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { ITicket } from '../iticket';
+import { HttpService } from '../http.service';
 
 /**
  * Data source for the TsysTable view. This class should
@@ -57,8 +58,12 @@ export class TsysTableDataSource extends MatTableDataSource<ITicket> {
   private imported = false;
   data: ITicket[] = [];
 
-  constructor(dataIncoming?: ITicket[]) {
-    super(dataIncoming);
+  constructor(http?: HttpService) {
+    super();
+    http.getTickets().subscribe(tickets => {
+      http.dataBuffer = tickets;
+      this.data = tickets;
+    });
   }
 
   addOrChangeData(newTicket: ITicket) {
