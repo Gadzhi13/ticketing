@@ -58,10 +58,10 @@ export class TsysTableDataSource extends MatTableDataSource<ITicket> {
   private imported = false;
   data: ITicket[] = [];
 
-  constructor(http?: HttpService) {
+  constructor(private http: HttpService) {
     super();
-    http.getTickets().subscribe(tickets => {
-      http.dataBuffer = tickets;
+    this.http.getTickets().subscribe(tickets => {
+      this.http.dataBuffer = tickets;
       this.data = tickets;
     });
   }

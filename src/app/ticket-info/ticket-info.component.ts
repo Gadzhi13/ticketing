@@ -3,8 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { RouteDataService } from '../route-data.service';
 import { ITicket } from '../iticket';
-import { Ticket } from '../ticket';
 import { TicketFinderService } from '../ticket-finder.service';
+import { HttpService } from '../http.service';
 
 @Component({
   selector: 'tsys-ticket-info',

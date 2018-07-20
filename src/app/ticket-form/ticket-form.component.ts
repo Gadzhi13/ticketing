@@ -29,7 +29,7 @@ export class TicketFormComponent {
   private ticket: ITicket = this.routeDataService.data || new Ticket();
 
   constructor(private fb: FormBuilder, private routeDataService: RouteDataService, private router: Router, private dialog: MatDialog, private http: HttpService) {
-    this.dataSource = new TsysTableDataSource();
+    this.dataSource = new TsysTableDataSource(this.http);
     this.createForm();
   }
 
