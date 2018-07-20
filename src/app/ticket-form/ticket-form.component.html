@@ -1,0 +1,136 @@
+<div class="container" style="padding: 10px 20px 10px 20px">
+  <h2>Ticket Detail</h2>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <table style="width: 100%">
+      <tr>
+        <td colspan="4">
+          <mat-form-field>
+            <input class="form-control" formControlName="title" matInput placeholder="Title">
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <mat-form-field>
+            <textarea class="form-control" formControlName="description" matInput placeholder="Description"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="padding5">
+          <mat-form-field>
+            <input class="form-control" formControlName="id" matInput placeholder="ID">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-select class="form-control" formControlName="status" matInput placeholder="Status">
+              <mat-option *ngFor="let option of statusOptions" [value]="option">{{option}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-select class="form-control" formControlName="impact" matInput placeholder="Impact">
+                <mat-option *ngFor="let option of impactOptions" [value]="option">{{option == 1 ? 'Total loss of service' : option == 2 ? 'Major functionality failure' : 'Minor functionality failure'}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="submitDate" [matDatepicker]="subDatePicker" placeholder="Submission Date">
+            <mat-datepicker-toggle matSuffix [for]="subDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #subDatePicker></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="padding5">
+          <mat-form-field>
+            <input class="form-control" formControlName="link" matInput placeholder="Link">
+          </mat-form-field>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="requestType" placeholder="Type of Request" [matAutocomplete]="requestAuto">
+          </mat-form-field>
+          <mat-autocomplete #requestAuto="matAutocomplete">
+            <mat-option *ngFor="let option of requestTypeOptions" [value]="option">{{option}}</mat-option>
+          </mat-autocomplete>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="product" placeholder="Product" [matAutocomplete]="productAuto">
+          </mat-form-field>
+          <mat-autocomplete #productAuto="matAutocomplete">
+            <mat-option *ngFor="let option of productOptions" [value]="option">{{option}}</mat-option>
+          </mat-autocomplete>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input class="form-control" formControlName="SAID" matInput placeholder="SAID" [matAutocomplete]="saidAuto">
+          </mat-form-field>
+          <mat-autocomplete #saidAuto="matAutocomplete">
+            <mat-option *ngFor="let option of saidOptions" [value]="option">{{option}}</mat-option>
+          </mat-autocomplete>
+        </td>
+      </tr>
+      <tr>
+        <td class="padding5">
+          <mat-form-field>
+            <input class="form-control" formControlName="solution" matInput placeholder="Solution">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-select class="form-control" formControlName="priority" matInput placeholder="Priority">
+              <mat-option *ngFor="let option of prioOptions" [value]="option">{{option == 1 ? 'High' : option == 2 ? 'Middle' : 'Low'}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-select class="form-control" formControlName="statusNextStep" matInput placeholder="Status Next Step">
+              <mat-option *ngFor="let option of statusNextOptions" [value]="option">{{option}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="modificationDate" [matDatepicker]="modDatePicker" placeholder="Modification Date">
+            <mat-datepicker-toggle matSuffix [for]="modDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #modDatePicker></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <mat-form-field>
+            <textarea class="form-control" formControlName="solutionDescription" matInput placeholder="Solution Description"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="changeID" placeholder="Change ID">
+          </mat-form-field>
+        </td>
+        <td class="padding5">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="workflowStatus" placeholder="Workflow Status">
+          </mat-form-field>
+        </td>
+        <td class="padding5" colspan="4">
+          <mat-form-field>
+            <input matInput class="form-control" formControlName="changeNote" placeholder="Change Note">
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button mat-raised-button type="submit">Submit</button>
+  </div>
+  </form>
+  <p>Form value: {{ ticketForm.value | json }}</p>
+</div>

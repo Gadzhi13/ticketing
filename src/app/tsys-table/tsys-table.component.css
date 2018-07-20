@@ -1,0 +1,32 @@
+mat-row:hover {
+    cursor: pointer;
+    background-color: rgb(221, 221, 221);
+    animation-name: mouseover;
+    animation-duration: 0.25s;
+}
+
+mat-row:not(:hover) {
+    background-color: rgb(255, 255, 255);
+}
+
+mat-row:active {
+    background-color: rgb(221, 221, 221);
+    animation-name: click;
+    animation-duration: 0.1s;
+}
+
+@keyframes mouseover {
+    from {background-color: rgb(255, 255, 255);}
+    to {background-color: rgb(221, 221, 221);}
+}
+
+@keyframes click {
+    from {background-color: rgb(180, 180, 180);}
+    to {background-color: rgb(221, 221, 221);}
+}
+
+.mat-form-field {
+    font-size: 14px;
+    padding: 0px 0px 0px 5px;
+    width: 30%;
+}

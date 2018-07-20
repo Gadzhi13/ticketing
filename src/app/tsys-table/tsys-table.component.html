@@ -1,0 +1,45 @@
+<mat-select id="" placeholder="Columns" multiple [(ngModel)]="displayedColumns" style="height: 40px; width: 200px; padding: 20px 5px 5px 5px;">
+  <mat-select-trigger>
+    {{displayedColumns ? displayedColumns[0] : ''}}
+    <span *ngIf="displayedColumns.length > 0" class="example-additional-selection">
+      (+{{displayedColumns.length - 1}} others)
+    </span>
+  </mat-select-trigger>
+  <mat-option *ngFor="let column of allColumns" [value]="column" (click)="changeColumn(column)">{{capitalizeFirstLetter(column)}}</mat-option>
+</mat-select>
+
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
+
+<span>
+  <mat-select #filter placeholder="Search in..." style="height: 40px; width: 200px; padding: 20px 5px 5px 5px;">
+    <mat-option *ngFor="let column of allColumns" [value]="column" (click)="changeFilterPredicateColumn(column)">{{capitalizeFirstLetter(column)}}</mat-option>
+  </mat-select>
+
+  <button mat-raised-button type="reset" (click)="resetFilterPredicate()">Reset Filter</button>
+</span>
+
+<div class="mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+    <ng-container *ngFor="let column of allColumns" matColumnDef="{{column}}">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{capitalizeFirstLetter(column)}}</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row[column] | dateIfDate}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/tickets', row.id]" (click)="sendData(row)"></mat-row>
+  </mat-table>
+
+
+
+  <mat-paginator #paginator
+    [length]="dataSource.data.length"
+    [pageIndex]="0"
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250]">
+
+  </mat-paginator>    
+
+</div>
