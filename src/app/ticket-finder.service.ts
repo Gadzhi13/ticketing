@@ -1,10 +1,10 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TsysTableDataSource } from './tsys-table/tsys-table-datasource';
 import { HttpService } from './http.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TicketFinderService implements OnInit {
+export class TicketFinderService {
 
   private dataSource: TsysTableDataSource;
 
@@ -15,6 +15,4 @@ export class TicketFinderService implements OnInit {
   findById(id: string) {
     return this.dataSource.data.find((ticket) => {return ticket.id == id});
   }
-
-  ngOnInit(): void {}
 }

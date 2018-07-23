@@ -48,6 +48,7 @@ export class TsysTableComponent implements AfterViewInit {
       this.allColumns.push(el);
     });
     this.dataSource = new TsysTableDataSource(this.http);
+    this.filterPredicateBuffer = this.dataSource.filterPredicate;
   };
 
   applyFilter(filterValue: string) {
@@ -60,7 +61,7 @@ export class TsysTableComponent implements AfterViewInit {
   }
 
   changeFilterPredicateColumn(column: string) {
-    this.dataSource.filterPredicate = (data: Element, filter: string) => data[column].indexOf(filter) != -1;
+    this.dataSource.filterPredicate = function (data: ITicket, filter: string) { return data[column].indexOf(filter) != -1 };
     this.applyFilter(this.filterValueBuffer);
   }
 
