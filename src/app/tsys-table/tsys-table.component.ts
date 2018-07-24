@@ -33,10 +33,6 @@ export class TsysTableComponent implements AfterViewInit, OnInit {
     }
   }
 
-  capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   ngOnInit(): void {
     this.sort.active = 'id';
     this.sort.direction = 'asc';

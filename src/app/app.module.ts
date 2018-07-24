@@ -58,6 +58,7 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
 import { DateIfDatePipe } from './date-if-date.pipe';
 import { InvalidFormDialogComponent } from './invalid-form-dialog/invalid-form-dialog.component';
 import { LoginOutComponent } from './login-out/login-out.component';
+import { HeadersPipe } from './headers.pipe';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { LoginOutComponent } from './login-out/login-out.component';
     TicketFormComponent,
     DateIfDatePipe,
     InvalidFormDialogComponent,
-    LoginOutComponent
+    LoginOutComponent,
+    HeadersPipe
   ],
   entryComponents: [
     InvalidFormDialogComponent
