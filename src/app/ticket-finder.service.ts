@@ -8,11 +8,19 @@ export class TicketFinderService {
 
   private dataSource: TsysTableDataSource;
 
-  constructor(private http: HttpService) {
-    this.dataSource = new TsysTableDataSource(this.http);
+  constructor() {
+    this.dataSource = new TsysTableDataSource();
   }
 
   findById(id: string) {
     return this.dataSource.data.find((ticket) => {return ticket.id == id});
+  }
+
+  containsById(id: string) {
+    if (this.dataSource.data.find((ticket) => {return ticket.id == id})) {
+      return true
+    } else {
+      return false
+    }
   }
 }
