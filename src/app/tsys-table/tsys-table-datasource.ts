@@ -70,12 +70,16 @@ export class TsysTableDataSource extends MatTableDataSource<ITicket> {
 
   addOrChangeData(newTicket: ITicket) {
     var changeIndex = this.data.findIndex((dataElement) => {return dataElement.id == newTicket.id});
+    console.log("incoming ticket in dataSource:");
     if (changeIndex !== -1) {
       this.data.splice(changeIndex, 1, newTicket);
+      console.log("Ticket changed!");
     } else {
+      this.http.addTicketToDb(newTicket).subscribe((res) => {console.log(res)});
       this.data.push(newTicket);
-    }
-    console.log("ticket added!" + JSON.stringify(newTicket));
+      console.log("ticket added!");
+    };
+    console.log(newTicket);
   }
 
   /**

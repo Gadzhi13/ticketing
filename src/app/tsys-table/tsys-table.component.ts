@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TsysTableDataSource } from './tsys-table-datasource';
@@ -12,7 +12,7 @@ import { HttpService } from '../http.service';
   templateUrl: './tsys-table.component.html',
   styleUrls: ['./tsys-table.component.css']
 })
-export class TsysTableComponent implements AfterViewInit {
+export class TsysTableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filterSelect: ElementRef;
@@ -35,6 +35,11 @@ export class TsysTableComponent implements AfterViewInit {
 
   capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  ngOnInit(): void {
+    this.sort.active = 'id';
+    this.sort.direction = 'asc';
   }
   
   ngAfterViewInit(): void {

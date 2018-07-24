@@ -39,7 +39,7 @@
         </td>
         <td class="padding5">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="submitDate" [matDatepicker]="subDatePicker" placeholder="Submission Date">
+            <input matInput class="form-control" formControlName="submitdate" [matDatepicker]="subDatePicker" placeholder="Submission Date">
             <mat-datepicker-toggle matSuffix [for]="subDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #subDatePicker></mat-datepicker>
           </mat-form-field>
@@ -53,7 +53,7 @@
         </td>
         <td class="padding5">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="requestType" placeholder="Type of Request" [matAutocomplete]="requestAuto">
+            <input matInput class="form-control" formControlName="requesttype" placeholder="Type of Request" [matAutocomplete]="requestAuto">
           </mat-form-field>
           <mat-autocomplete #requestAuto="matAutocomplete">
             <mat-option *ngFor="let option of requestTypeOptions" [value]="option">{{option}}</mat-option>
@@ -69,7 +69,7 @@
         </td>
         <td class="padding5">
           <mat-form-field>
-            <input class="form-control" formControlName="SAID" matInput placeholder="SAID" [matAutocomplete]="saidAuto">
+            <input class="form-control" formControlName="said" matInput placeholder="SAID" [matAutocomplete]="saidAuto">
           </mat-form-field>
           <mat-autocomplete #saidAuto="matAutocomplete">
             <mat-option *ngFor="let option of saidOptions" [value]="option">{{option}}</mat-option>
@@ -91,14 +91,14 @@
         </td>
         <td>
           <mat-form-field>
-            <mat-select class="form-control" formControlName="statusNextStep" matInput placeholder="Status Next Step">
+            <mat-select class="form-control" formControlName="statusnextstep" matInput placeholder="Status Next Step">
               <mat-option *ngFor="let option of statusNextOptions" [value]="option">{{option}}</mat-option>
             </mat-select>
           </mat-form-field>
         </td>
         <td class="padding5">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="modificationDate" [matDatepicker]="modDatePicker" placeholder="Modification Date">
+            <input matInput class="form-control" formControlName="modificationdate" [matDatepicker]="modDatePicker" placeholder="Modification Date">
             <mat-datepicker-toggle matSuffix [for]="modDatePicker"></mat-datepicker-toggle>
             <mat-datepicker #modDatePicker></mat-datepicker>
           </mat-form-field>
@@ -107,24 +107,24 @@
       <tr>
         <td colspan="4">
           <mat-form-field>
-            <textarea class="form-control" formControlName="solutionDescription" matInput placeholder="Solution Description"></textarea>
+            <textarea class="form-control" formControlName="solutiondescription" matInput placeholder="Solution Description"></textarea>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td class="padding5">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="changeID" placeholder="Change ID">
+            <input matInput class="form-control" formControlName="changeid" placeholder="Change ID">
           </mat-form-field>
         </td>
         <td class="padding5">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="workflowStatus" placeholder="Workflow Status">
+            <input matInput class="form-control" formControlName="workflowstatus" placeholder="Workflow Status">
           </mat-form-field>
         </td>
         <td class="padding5" colspan="4">
           <mat-form-field>
-            <input matInput class="form-control" formControlName="changeNote" placeholder="Change Note">
+            <input matInput class="form-control" formControlName="changenote" placeholder="Change Note">
           </mat-form-field>
         </td>
       </tr>

@@ -37,22 +37,22 @@ export class TicketFormComponent {
     this.ticketForm = this.fb.group({
       priority: this.ticket.priority,
       impact: [this.ticket.impact, Validators.required],
-      requestType: [this.ticket.requesttype, Validators.required],
-      submitDate: [this.ticket.submitdate, Validators.required],
+      requesttype: [this.ticket.requesttype, Validators.required],
+      submitdate: [this.ticket.submitdate, Validators.required],
       id: [this.ticket.id, Validators.required],
       title: [this.ticket.title, Validators.required],
       description: [this.ticket.description, Validators.required],
       status: [this.ticket.status, Validators.required],
       link: [this.ticket.link, Validators.required],
       product: [this.ticket.product, Validators.required],
-      SAID: [this.ticket.said, Validators.required],
-      modificationDate: [this.ticket.modificationdate, Validators.required],
-      statusNextStep: this.ticket.statusnextstep,
+      said: [this.ticket.said, Validators.required],
+      modificationdate: [this.ticket.modificationdate, Validators.required],
+      statusnextstep: this.ticket.statusnextstep,
       solution: this.ticket.solution,
-      solutionDescription: this.ticket.solutiondescription,
-      changeID: this.ticket.changeid,
-      workflowStatus: this.ticket.workflowstatus,
-      changeNote: this.ticket.changenote
+      solutiondescription: this.ticket.solutiondescription,
+      changeid: this.ticket.changeid,
+      workflowstatus: this.ticket.workflowstatus,
+      changenote: this.ticket.changenote
     });
   }
 
@@ -62,19 +62,14 @@ export class TicketFormComponent {
     })
   }
 
-  saveData() {
-    this.ticket = this.ticketForm.value;
-    this.dataSource.addOrChangeData(this.ticket);
-    this.http.addTicketToDb(this.ticket).subscribe((res) => {console.log(res)});
-  }
-
   onSubmit() {
     if (this.ticketForm.status == 'VALID') {
-      this.saveData();
+      this.ticket = this.ticketForm.value;
+      this.dataSource.addOrChangeData(this.ticket);
       this.ticket = new Ticket();
       this.router.navigate(['tickets']);
     } else {
       this.openDialog();
-    }
+    };
   }
 }
