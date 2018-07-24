@@ -10,11 +10,7 @@ export class DateIfDatePipe implements PipeTransform {
   constructor (private datePipe: DatePipe) {}
 
   transform(value: any, args?: any): any {
-    if (value instanceof Date) {
-      return this.datePipe.transform(value, 'dd.MM.yyyy');
-    } else {
-      return value;
-    }
+    return this.datePipe.transform(value, 'dd.MM.yyyy');
   }
 
 }
