@@ -8,50 +8,6 @@ import { HttpService } from '../http.service';
  * (including sorting, pagination, and filtering).
  */
 
-
-/*var rawData: ITicket[] = [
-  {id: '1', title: 'Hydrogen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '2', title: 'Helium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '3', title: 'Lithium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '4', title: 'Beryllium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '5', title: 'Boron', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '6', title: 'Carbon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '7', title: 'Nitrogen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '8', title: 'Oxygen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '9', title: 'Fluorine', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '10', title: 'Neon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '11', title: 'Sodium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '12', title: 'Magnesium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '13', title: 'Aluminum', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '14', title: 'Silicon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '15', title: 'Phosphorus', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '16', title: 'Sulfur', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '17', title: 'Chlorine', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '18', title: 'Argon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '19', title: 'Potassium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '20', title: 'Calcium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '1', title: 'Hydrogen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '2', title: 'Helium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '3', title: 'Lithium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '4', title: 'Beryllium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '5', title: 'Boron', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '6', title: 'Carbon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '7', title: 'Nitrogen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '8', title: 'Oxygen', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '9', title: 'Fluorine', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '10', title: 'Neon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '11', title: 'Sodium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '12', title: 'Magnesium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '13', title: 'Aluminum', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '14', title: 'Silicon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '15', title: 'Phosphorus', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '16', title: 'Sulfur', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '17', title: 'Chlorine', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '18', title: 'Argon', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '19', title: 'Potassium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())},
-  {id: '20', title: 'Calcium', priority: 0, impact: 0, requesttype: 'Request Type', submitdate: new Date(Date.now()), description: 'Description', status: 'Status', link: 'Link', product: 'Product', said: 322, modificationdate: new Date(Date.now())}
-];*/
-
 export class TsysTableDataSource extends MatTableDataSource<ITicket> {
   paginator: MatPaginator;
   sort: MatSort;
@@ -68,18 +24,25 @@ export class TsysTableDataSource extends MatTableDataSource<ITicket> {
     };
   }
 
-  addOrChangeData(newTicket: ITicket) {
+  addOrChangeData(newTicket: ITicket, edit: boolean) {
     var changeIndex = this.data.findIndex((dataElement) => {return dataElement.id == newTicket.id});
     console.log("incoming ticket in dataSource:");
-    if (changeIndex !== -1) {
+    if (changeIndex > -1 && edit) {
       this.data.splice(changeIndex, 1, newTicket);
       console.log("Ticket changed!");
     } else {
-      this.http.addTicketToDb(newTicket).subscribe((res) => {console.log(res)});
       this.data.push(newTicket);
       console.log("ticket added!");
     };
     console.log(newTicket);
+  }
+
+  addToDb(newTicket: ITicket) {
+    this.http.addTicketToDb(newTicket).subscribe((res) => {console.log(res)});
+  }
+
+  editInDb(newTicket: ITicket) {
+    this.http.editTicektInDb(newTicket).subscribe((res) => {console.log(res)});
   }
 
   /**

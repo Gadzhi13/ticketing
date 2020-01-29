@@ -16,7 +16,6 @@ import { HttpService } from '../http.service';
   styleUrls: ['./ticket-form.component.css']
 })
 export class TicketFormComponent {
-
   private prioOptions: number[] = [1,2,3];
   private impactOptions: number[] = [1,2,3];
   private requestTypeOptions: string[] = ['Product Enhancement Request', 'Product Technical Issue'];
@@ -24,9 +23,10 @@ export class TicketFormComponent {
   private statusOptions: string[] = ['Closed - Next Version', 'Closed - No Progress', 'Closed - Solved', 'Open', 'Pending Customer', 'Work in Progress'];
   private statusNextOptions: string[] = ['Open - Waiting for Supported Version', 'Open - in Contact with MF', 'Closed'];
   private saidOptions: string[] = ['108344698322'];
+  private ticket: ITicket = this.routeDataService.data || new Ticket();
   private dataSource: TsysTableDataSource;
   private ticketForm: FormGroup;
-  private ticket: ITicket = this.routeDataService.data || new Ticket();
+  private edit: boolean = false;
 
   constructor(private fb: FormBuilder, private routeDataService: RouteDataService, private router: Router, private dialog: MatDialog, private http: HttpService) {
     this.dataSource = new TsysTableDataSource(this.http);
@@ -63,9 +63,10 @@ export class TicketFormComponent {
   }
 
   onSubmit() {
+    this.router.url.substr(-9, 3) == 'new'? this.edit = false : this.edit = true;
     if (this.ticketForm.status == 'VALID') {
       this.ticket = this.ticketForm.value;
-      this.dataSource.addOrChangeData(this.ticket);
+      this.dataSource.addOrChangeData(this.ticket, this.edit);
       this.ticket = new Ticket();
       this.router.navigate(['tickets']);
     } else {
